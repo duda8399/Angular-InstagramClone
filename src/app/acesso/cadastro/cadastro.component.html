@@ -1,0 +1,82 @@
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <div class="card-title"></div>
+    
+    <form [formGroup]="formulario" (ngSubmit)="cadastrarUsuario()">
+      <div class="form-group">
+        <input 
+          type="email" 
+          class="form-control" 
+          placeholder="E-mail"
+          formControlName="email"
+        >
+        <small *ngIf="formulario.get('email').valid && formulario.get('email').touched">
+          <p class="text-success">Ok</p>
+        </small>
+        <small *ngIf="formulario.get('email').invalid && formulario.get('email').touched">
+          <p class="text-danger">O campo e-mail é obrigatório</p> 
+        </small>
+      </div>
+      <div class="form-group">
+        <input 
+          type="text"
+          class="form-control" 
+          placeholder="Nome completo"
+          formControlName="nome_completo"
+        >
+        <small *ngIf="formulario.get('nome_completo').valid && formulario.get('nome_completo').touched">
+          <p class="text-success">Ok</p>
+        </small>
+        <small *ngIf="formulario.get('nome_completo').invalid && formulario.get('nome_completo').touched">
+          <p class="text-danger">O campo nome completo é obrigatório</p> 
+        </small>
+      </div>
+      <div class="form-group">
+        <input 
+          type="text"
+          class="form-control" 
+          placeholder="Nome de usuário"
+          formControlName="nome_usuario"
+        >
+        <small *ngIf="formulario.get('nome_usuario').valid && formulario.get('nome_usuario').touched">
+          <p class="text-success">Ok</p>
+        </small>
+        <small *ngIf="formulario.get('nome_usuario').invalid && formulario.get('nome_usuario').touched">
+          <p class="text-danger">O campo nome usuário é obrigatório</p> 
+        </small>
+      </div>
+      <div class="form-group">
+        <input 
+          type="password"
+          class="form-control" 
+          placeholder="Senha"
+          formControlName="senha"
+        >
+        <small *ngIf="formulario.get('senha').valid && formulario.get('senha').touched">
+          <p class="text-success">Ok</p>
+        </small>
+        <small *ngIf="formulario.get('senha').invalid && formulario.get('senha').touched">
+          <p class="text-danger">O campo senha é obrigatório e precisa ter mais de 6 caracteres</p> 
+        </small>
+      </div>
+      <button [disabled]="!formulario.valid" type="submit" class="btn btn-primary btn-sm btn-block">Cadastre-se</button>
+    </form>
+    <hr />
+
+    <div *ngIf="msgErro !== undefined" class="mb-3">
+      <small class="text-danger">{{ msgErro }}</small>
+      <hr />
+    </div>
+
+    <p class="small text-center">Ao cadastrar-se, você concorda com nossos <b>Termos</b> e <b>Política de Privacidade</b>.</p>
+
+  </div>
+</div>
+<br />
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <p class="card-text">
+      Tem uma conta? <a href="#" (click)="exibirPainelLogin()" class="card-link">Faça login</a>
+    </p> 
+  </div>
+</div>

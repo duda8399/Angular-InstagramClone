@@ -1,0 +1,50 @@
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <div class="card-title"></div>
+    
+    <form [formGroup]="formulario" (ngSubmit)="autenticar()">
+      <div class="form-group">
+        <input 
+          type="email" 
+          class="form-control" 
+          placeholder="E-mail"
+          formControlName="email"
+        >
+        <small *ngIf="formulario.get('email').valid && formulario.get('email').touched">
+          <p class="text-success">Ok</p>
+        </small>
+        <small *ngIf="formulario.get('email').invalid && formulario.get('email').touched">
+          <p class="text-danger">O campo e-mail é obrigatório</p> 
+        </small>
+      </div>
+      <div class="form-group">
+        <input 
+          type="password"
+          class="form-control" 
+          placeholder="Senha"
+          formControlName="senha"
+        >
+        <small *ngIf="formulario.get('senha').valid && formulario.get('senha').touched">
+          <p class="text-success">Ok</p>
+        </small>
+        <small *ngIf="formulario.get('senha').invalid && formulario.get('senha').touched">
+          <p class="text-danger">O campo senha é obrigatório e precisa ter mais de 6 caracteres</p> 
+        </small>
+      </div>
+      <button [disabled]="!formulario.valid" type="submit" class="btn btn-primary btn-sm btn-block">Entrar</button>
+    </form>
+    <hr />
+    <div *ngIf="msgErro !== undefined ">
+      <small class="text-danger">{{ msgErro }}</small>
+    </div>
+
+  </div>
+</div>
+<br />
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <p class="card-text">
+      Não tem uma conta? <a href="#" (click)="exibirPainelCadastro()" class="card-link">Cadastre-se</a>
+    </p> 
+  </div>
+</div>
